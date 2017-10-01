@@ -12,5 +12,5 @@ This server validates identity cards / passports / etc via POST request. Request
 Please note, that if you want to run it yourself, you should set google cloud credentials in PATH:
 
 ```
-export GOOGLE_APPLICATION_CREDENTIALS="/path/to/key.json"
+export GOOGLE_APPLICATION_CREDENTIALS="key.json"
 ```
