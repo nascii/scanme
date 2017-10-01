@@ -22,9 +22,14 @@ class ScanmeServer(BaseHTTPRequestHandler):
         data = json.loads(raw_data.decode('utf-8'))
 
         self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
 
-        if validate_identity_card(data['user_info'], data['ic_image_uri']):
-            self.wfile.write(bytes('{\"is_valid": True}\n', "utf-8"))
+        is_valid = validate_identity_card(data['user_info'], data['ic_image_uri'])
+        print('Validatation result', is_valid)
+
+        if is_valid:
+            self.wfile.write(bytes('{\"is_valid\": true}\n', "utf-8"))
         else:
-            self.wfile.write(bytes('{\"is_valid": False}\n', "utf-8"))
+            self.wfile.write(bytes('{\"is_valid\": false}\n', "utf-8"))
 
