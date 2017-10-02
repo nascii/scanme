@@ -7,7 +7,7 @@ from google.cloud.vision import types
 client = vision.ImageAnnotatorClient()
 
 # These labels must be amongst recognized labels
-REQUIRED_LABELS = set(['identity document', 'face', 'text'])
+REQUIRED_LABELS = set(['identity document'])
 REQUIRED_USER_FIELDS = ['first_name', 'last_name']
 
 def validate_labels(ic_image_uri):
